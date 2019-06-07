@@ -1,0 +1,12 @@
+C:\Users\ylokhat\Documents\Visual Studio 2017\Projects\_Astek\StopWatch_Monitor\StopWatch_Monitor\bin\Release\Activity_Monitor.exe.config
+C:\Users\ylokhat\Documents\Visual Studio 2017\Projects\_Astek\StopWatch_Monitor\StopWatch_Monitor\bin\Release\Activity_Monitor.exe
+C:\Users\ylokhat\Documents\Visual Studio 2017\Projects\_Astek\StopWatch_Monitor\StopWatch_Monitor\bin\Release\Activity_Monitor.pdb
+C:\Users\ylokhat\Documents\Visual Studio 2017\Projects\_Astek\StopWatch_Monitor\StopWatch_Monitor\bin\Release\CSV_API.dll
+C:\Users\ylokhat\Documents\Visual Studio 2017\Projects\_Astek\StopWatch_Monitor\StopWatch_Monitor\obj\Release\StopWatch_Monitor.csprojAssemblyReference.cache
+C:\Users\ylokhat\Documents\Visual Studio 2017\Projects\_Astek\StopWatch_Monitor\StopWatch_Monitor\obj\Release\StopWatch_Monitor.MainForm.resources
+C:\Users\ylokhat\Documents\Visual Studio 2017\Projects\_Astek\StopWatch_Monitor\StopWatch_Monitor\obj\Release\Activity_Monitor.Properties.Resources.resources
+C:\Users\ylokhat\Documents\Visual Studio 2017\Projects\_Astek\StopWatch_Monitor\StopWatch_Monitor\obj\Release\StopWatch_Monitor.csproj.GenerateResource.cache
+C:\Users\ylokhat\Documents\Visual Studio 2017\Projects\_Astek\StopWatch_Monitor\StopWatch_Monitor\obj\Release\StopWatch_Monitor.csproj.CoreCompileInputs.cache
+C:\Users\ylokhat\Documents\Visual Studio 2017\Projects\_Astek\StopWatch_Monitor\StopWatch_Monitor\obj\Release\StopWatch_Monitor.csproj.CopyComplete
+C:\Users\ylokhat\Documents\Visual Studio 2017\Projects\_Astek\StopWatch_Monitor\StopWatch_Monitor\obj\Release\Activity_Monitor.exe
+C:\Users\ylokhat\Documents\Visual Studio 2017\Projects\_Astek\StopWatch_Monitor\StopWatch_Monitor\obj\Release\Activity_Monitor.pdb
