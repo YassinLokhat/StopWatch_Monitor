@@ -159,6 +159,11 @@ namespace StopWatch_Monitor
             }
         }
 
+        public new void Focus()
+        {
+            cbTasks.Focus();
+        }
+
         private void TaskComponent_SizeChanged(object sender, EventArgs e)
         {
             pAddMinutes.Location = new System.Drawing.Point(this.Width - 5 - pAddMinutes.Width - 5, controlY - 5);

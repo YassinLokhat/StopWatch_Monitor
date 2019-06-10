@@ -126,6 +126,7 @@ namespace StopWatch_Monitor
             taskComponent.Size = new Size(this.Width - 25, 40);
             Tasks.Add(taskComponent);
             this.Controls.Add(taskComponent);
+            taskComponent.Focus();
         }
 
         private void exportCSVToolStripMenuItem_Click(object sender, EventArgs e)
