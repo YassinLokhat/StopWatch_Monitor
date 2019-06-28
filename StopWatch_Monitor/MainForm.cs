@@ -6,7 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using CSV_API;
 
@@ -14,20 +14,31 @@ namespace StopWatch_Monitor
 {
     public partial class MainForm : Form
     {
-        public static List<TaskComponent> Tasks = new List<TaskComponent>();
+        public static List<TaskComponent> Tasks { get; private set; } = new List<TaskComponent>();
         
         int taskY = 30;
         List<string> tasks;
+        public static string Extract { get { return Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\"; } }
+        public static string ExtractGlobal { get { return Extract + "Extract_Global\\"; } }
 
         public MainForm()
         {
             InitializeComponent();
 
             tasks = new List<string>();
-            if (!File.Exists("Extract_Global/Extract_Global.csv"))
-                File.WriteAllText("Extract_Global/Extract_Global.csv", "Date,Task,Duration,Comments\n");
+            if (!Directory.Exists(Extract + "Extract_ByDate"))
+            {
+                Directory.CreateDirectory(Extract + "Extract_ByDate");
+            }
+            if (!Directory.Exists(ExtractGlobal))
+            {
+                Directory.CreateDirectory(ExtractGlobal);
+            }
 
-            CsvFileReader csvFileReader = new CsvFileReader("Extract_Global/Extract_Global.csv");
+            if (!File.Exists(ExtractGlobal + "Extract_Global.csv"))
+                File.WriteAllText(ExtractGlobal + "Extract_Global.csv", "Date,Task,Duration,Comments\n");
+
+            CsvFileReader csvFileReader = new CsvFileReader(ExtractGlobal + "Extract_Global.csv");
             CsvRow row = new CsvRow();
             csvFileReader.ReadRow(row);
             while (csvFileReader.ReadRow(row))
@@ -43,11 +54,11 @@ namespace StopWatch_Monitor
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            export("Extract_Global/Extract_Global.csv");
-            export("Extract_ByDate/Extract_" + DateTime.Now.ToShortDateString().Replace("/", "-") + ".csv");
+            Export(ExtractGlobal + "Extract_Global.csv", true);
+            Export(Extract + "Extract_ByDate/Extract_" + DateTime.Now.ToShortDateString().Replace("/", "-") + ".csv", true);
         }
 
-        private void export(string path)
+        public static void Export(string path, bool rearange = false)
         {
             if (!File.Exists(path))
                 File.WriteAllText(path, "Date,Task,Duration,Comments\n");
@@ -63,10 +74,13 @@ namespace StopWatch_Monitor
 
             csvFileWriter.Close();
 
-            rearange(path);
+            if (rearange)
+            {
+                Rearange(path);
+            }
         }
 
-        private void rearange(string path)
+        public static void Rearange(string path)
         {
             Dictionary<string, Dictionary<string, List<string>>> csvContent = new Dictionary<string, Dictionary<string, List<string>>>();
 
@@ -137,7 +151,7 @@ namespace StopWatch_Monitor
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
                 return;
 
-            export(saveFileDialog.FileName);
+            Export(saveFileDialog.FileName, true);
         }
     }
 }

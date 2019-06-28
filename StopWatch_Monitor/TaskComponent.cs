@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StopWatch_Monitor
@@ -34,8 +33,10 @@ namespace StopWatch_Monitor
 
             watch = new DateTime(0);
 
-            timer = new Timer();
-            timer.Interval = 1000;
+            timer = new Timer
+            {
+                Interval = 1000
+            };
             timer.Tick += Timer_Tick;
 
             cbTasks.TextChanged += CbTasks_TextChanged;
@@ -122,8 +123,8 @@ namespace StopWatch_Monitor
             if (cbTasks.Text == "")
                 return;
 
-            foreach (TaskComponent task in MainForm.Tasks)
-                task.BackColor =  SystemColors.Control;
+            foreach (TaskComponent _task in MainForm.Tasks)
+                _task.BackColor =  SystemColors.Control;
 
             if (bStart.Text == "Pause")
                 StopWatch();
@@ -137,14 +138,17 @@ namespace StopWatch_Monitor
                 timer.Start();
                 this.BackColor = Color.LightGreen;
                 bStart.Text = "Pause";
-                foreach (TaskComponent task in MainForm.Tasks)
+                foreach (TaskComponent _task in MainForm.Tasks)
                 {
-                    if (!task.Equals(this))
+                    if (!_task.Equals(this))
                     {
-                        task.StopWatch(this.task);
+                        _task.StopWatch(task);
                     }
                 }
             }
+
+            MainForm.Export(MainForm.ExtractGlobal + "Extract_Global.csv");
+            MainForm.Export(MainForm.Extract + "Extract_ByDate/Extract_" + DateTime.Now.ToShortDateString().Replace("/", "-") + ".csv");
         }
 
         private void BAddMinutes_Click(object sender, EventArgs e)
@@ -157,6 +161,9 @@ namespace StopWatch_Monitor
                 BStart_Click(null, null);
                 BStart_Click(null, null);
             }
+
+            MainForm.Export(MainForm.ExtractGlobal + "Extract_Global.csv");
+            MainForm.Export(MainForm.Extract + "Extract_ByDate/Extract_" + DateTime.Now.ToShortDateString().Replace("/", "-") + ".csv");
         }
 
         public new void Focus()
@@ -185,6 +192,9 @@ namespace StopWatch_Monitor
                 if (cbTasks.Text == task)
                     cbTasks.Text = "";
             }
+
+            MainForm.Export(MainForm.ExtractGlobal + "Extract_Global.csv");
+            MainForm.Export(MainForm.Extract + "Extract_ByDate/Extract_" + DateTime.Now.ToShortDateString().Replace("/", "-") + ".csv");
         }
 
         public string GetCSVLine()
